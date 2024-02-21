@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Map from './Map';
+import mapboxgl from 'mapbox-gl';
 
-function App() {
+
+
+const App: React.FC = () => {
+  const center = new mapboxgl.LngLat(2.35,48.85);
+  const zoom = 8;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Mapbox APP</h1>
+      <Map center={center} zoom={zoom} />
     </div>
   );
-}
+};
 
 export default App;
