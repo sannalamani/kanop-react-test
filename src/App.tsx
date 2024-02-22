@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 
 const App: React.FC = () => {
   const center = new mapboxgl.LngLat(2.35,48.85);
-  const zoom = 8;
+  const zoom = 6;
 
   return (
     <div>
