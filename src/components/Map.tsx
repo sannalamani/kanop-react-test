@@ -54,15 +54,17 @@ useEffect(() => {
 
            
            //Call to API function in services/countryApiService to return API data
-           countryApi(countryName);
+            const op = countryApi(countryName);
            
-          
 
-            //set popup with html content of country name
-            // popup.setLngLat(mousePosition.lngLat as mapboxgl.LngLat).setHTML(
-            //     `<div>Country details</div>
-            //     <div>Country: ${countryInfo}</div>`
-            // )
+            //set popup with html content of country details
+            popup.setLngLat(mousePosition.lngLat as mapboxgl.LngLat).setHTML(
+                `<h5>COUNTRY DETAILS</h5>
+                <div>Name: ${op.name}</div>
+                <div>Capital: ${op.capital}</div>
+                <div>region: ${op.region}</div>
+                <div>Population: ${op.population}</div>`
+            )
         
             if (!popup.isOpen()) {
             popup.addTo(map.current!);
