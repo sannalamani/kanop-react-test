@@ -4,14 +4,16 @@ import countryApi from '../services/CountryApiService';
 
 
 
+
 interface MapProps {
   center: LngLat;
   zoom: number;
 }
 
-//token to access Mapbox inside ""
-mapboxgl.accessToken = "";
+//token to access Mapbox 
+const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN as string
 
+mapboxgl.accessToken = mapboxToken
 
 
 const Map: React.FC<MapProps> = ({ center, zoom }) => {
@@ -54,16 +56,16 @@ useEffect(() => {
 
            
            //Call to API function in services/countryApiService to return API data
-            const op = countryApi(countryName);
+            const countryInfo = countryApi(countryName);
            
 
             //set popup with html content of country details
             popup.setLngLat(mousePosition.lngLat as mapboxgl.LngLat).setHTML(
                 `<h5>COUNTRY DETAILS</h5>
-                <div>Name: ${op.name}</div>
-                <div>Capital: ${op.capital}</div>
-                <div>region: ${op.region}</div>
-                <div>Population: ${op.population}</div>`
+                <div>Name: ${countryInfo.name}</div>
+                <div>Capital: ${countryInfo.capital}</div>
+                <div>region: ${countryInfo.region}</div>
+                <div>Population: ${countryInfo.population}</div>`
             )
         
             if (!popup.isOpen()) {

@@ -6,6 +6,9 @@ const MAP_COUNTRY_API= "https://countryapi.io/api/name/";
 let check:string = '';
 let requiredResponse:any = {};
 
+const countryApiKey = process.env.REACT_APP_API_KEY
+
+
 // function to take country name as argument and return country API data
 export const countryApi = (countryName:string) => {
     
@@ -13,9 +16,11 @@ export const countryApi = (countryName:string) => {
       implemented to call API only once for a country(to avoid multiple API calls)*/
       if(check!==countryName)
       {
-        axios.get(MAP_COUNTRY_API+countryName,{params:{apikey:""}})
+        axios.get(MAP_COUNTRY_API+countryName,{params:{apikey:countryApiKey}})
        .then((response) =>
         {
+
+            
             //loop to iterate and seperate the JSON data to key value pair
             for(const[key,value] of Object.entries(response.data))
             {
@@ -33,7 +38,9 @@ export const countryApi = (countryName:string) => {
             }
             
             
-        });
+        }).catch((e)=>{
+            console.log(e)
+        })
 
        check = countryName;
       }
