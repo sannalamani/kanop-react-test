@@ -82,8 +82,14 @@ useEffect(() => {
     }, [center, zoom]);
 
 
-
-    return <div ref={mapContainer} style={{ width: '100%', height: '500px' }} />;
+    //map css styling setup
+    return <div ref={mapContainer} style={{
+      border: 'solid',
+      borderColor: 'skyblue' ,
+      height: '550px' ,
+      marginTop:20 ,
+      marginLeft:50 ,
+      marginRight:50 }} />;
 };
 
 export default Map;
