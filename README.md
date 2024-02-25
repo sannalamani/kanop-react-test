@@ -56,6 +56,14 @@ This application has a Dockerfile to create an Image and run the application on 
 Application will run at port 3000 in localhost.
 Open your browser and go to http://localhost:3000.
 
+### Stopping the Application
+
+To stop the container get the container Id or container name from the command
+`docker container ls`
+
+and run the command `docker stop <container_name or container_id>`
+
+
 
 
 
