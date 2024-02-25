@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# Kanop React Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mapbox GL application to display country information
+This App has a interactive world map that popup corresponding country information when hovered on name of the country
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- Introduction
+- Prerequisites
+- Getting Started
+- Environment Variables
+- Docker Image and Container 
+- Accessing the Application
+- Stopping the Application
 
-### `npm start`
+### Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This App has a interactive world map that popup corresponding country information fetched by API when hovered on name of the country
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+ - Docker
+ - React
+ - Git
+ - VS code or editor of your choice
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Authors
 
-### `npm run build`
+[@Durga_Sannala](https://github.com/sannalamani)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Getting started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+follow the below procedure to run the application locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Environment Variables
 
-### `npm run eject`
+Create a  `.env`  file and add the below values with Mapbox gl access token and Country API key in the .env file to run the Application 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`REACT_APP_MAPBOX_TOKEN`
+`REACT_APP_API_KEY`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Docker Image and Container
 
-## Learn More
+This application has a Dockerfile to create an Image and run the application on a container.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### run the below command to create a docker image
+`docker build -t mapbox-react-app .`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### once the Image is created , run the below command to run the application on a container
+`docker run -p 3000:3000 mapbox-react-app`
+
+### Accessing the Application
+
+Application will run at port 3000 in localhost.
+Open your browser and go to http://localhost:3000.
+
+### Stopping the Application
+
+To stop the container get the container Id or container name from the command
+`docker container ls`
+
+and run the command `docker stop <container_name or container_id>`

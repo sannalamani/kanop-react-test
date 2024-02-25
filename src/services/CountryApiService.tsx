@@ -14,25 +14,25 @@ export const countryApi = (countryName:string) => {
     
     /*returns country API details when value in countryName is changed
       implemented to call API only once for a country(to avoid multiple API calls)*/
-      if(check!==countryName)
+      if(check !== countryName)
       {
         axios.get(MAP_COUNTRY_API+countryName,{params:{apikey:countryApiKey}})
        .then((response) =>
         {
-
-            
             //loop to iterate and seperate the JSON data to key value pair
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             for(const[key,value] of Object.entries(response.data))
             {
-                const value2:AxiosResponse = value as AxiosResponse;
+
+                const countryInfo:AxiosResponse = value as AxiosResponse;
                 
                 //nested loop to fetch JSON data inside country key from the above data
-                for(const[key2,value3] of Object.entries(value2))
+                for(const[dataKey,dataValue] of Object.entries(countryInfo))
                 {
-                    if(key2==="name" || key2 === "region" || key2 === "capital" || key2 ==="population")
+                    if(dataKey === "name" || dataKey === "region" || 
+                        dataKey === "capital" || dataKey === "population")
                     {
-                   
-                        requiredResponse[key2] = value3;
+                        requiredResponse[dataKey] = dataValue;
                     }
                 }
             }
